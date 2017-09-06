@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html><head><!-- Multi-Site IP Recon --></head>
+<body>
+<iframe id="myipms" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="jira" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="talosintelligence" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="shodan" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="alienvault" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="virustotal" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+<iframe id="sans" style="border-style: solid; border-color: red; border-width:5px; height:500px; width:100%;" src=""></iframe>
+
+<script>
+function getParameterByName(name) {
+    url = window.location.href;
+	name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+		
+		var ipvar = getParameterByName("ip");
+		var jiradomain = ""
+		var myipmsurl = "https://myip.ms/info/whois/" + ipvar;
+		var jiraurl = "https://" + jiradomain + "/issues/?jql=text%20~%20" + ipvar + "%20ORDER%20BY%20created%20DESC";
+		var talosintelligenceurl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + ipvar;
+		var shodanurl = "https://www.shodan.io/search?query=" + ipvar + "&ref=os";
+		var alienvaulturl = "https://www.alienvault.com/open-threat-exchange/dashboard#/my/reputation-monitor/" + ipvar;
+		var virustotalurl = "https://www.virustotal.com/en/ip-address/" + ipvar + "/information/";
+		var sansurl = "https://isc.sans.edu/ipinfo.html?ip=" + ipvar;
+		var abuseipdburl = "https://www.abuseipdb.com/check/" + ipvar;
+		
+		
+		document.getElementById("myipms").src = myipmsurl;
+		document.getElementById("jira").src = jiraurl;
+		document.getElementById("talosintelligence").src = talosintelligenceurl; 
+		document.getElementById("shodan").src = shodanurl;
+		document.getElementById("alienvault").src = alienvaulturl;
+		document.getElementById("virustotal").src =	virustotalurl;
+		document.getElementById("sans").src = sansurl;
+		document.getElementById("abuseipdb").src = abuseipdburl;
+		
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
